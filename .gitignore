@@ -1,0 +1,15 @@
+
+out/production/testProducerConsumer/SynchronizedProducer.class
+out/production/testProducerConsumer/SynchronizedConsumer.class
+out/production/testProducerConsumer/Main.class
+out/production/testProducerConsumer/LockProducer.class
+out/production/testProducerConsumer/LockConsumer.class
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/encodings.xml
+.idea/description.html
+.idea/compiler.xml
+.DS_Store
+testProducerConsumer.iml
