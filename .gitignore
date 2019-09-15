@@ -6,3 +6,4 @@ testProducerConsumer.iml
 
 .idea/uiDesigner.xml
 .idea/codeStyles/codeStyleConfig.xml
+out/production/testProducerConsumer/META-INF/TestProducerConsumer.kotlin_module

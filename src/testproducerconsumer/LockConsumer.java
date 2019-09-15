@@ -1,19 +1,19 @@
+package testproducerconsumer;
+
 import java.util.Queue;
 import java.util.Random;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
-public class LockProducer implements Runnable {
+public class LockConsumer implements Runnable {
     private Queue<String> mQueue;
-    private int mMaxQueueSize;
 
     private Lock mLock;
     private Condition mFullCondition;
     private Condition mEmptyCondition;
 
-    public LockProducer(Queue<String> queue, int maxQueueSize, Lock lock, Condition fullCondition, Condition emptyCondition) {
+    public LockConsumer(Queue<String> queue, Lock lock, Condition fullCondition, Condition emptyCondition) {
         mQueue = queue;
-        mMaxQueueSize = maxQueueSize;
         mLock = lock;
         mFullCondition = fullCondition;
         mEmptyCondition = emptyCondition;
@@ -23,19 +23,19 @@ public class LockProducer implements Runnable {
     public void run() {
         while (true) {
             mLock.lock();
-            while (mQueue.size() == mMaxQueueSize) {
+            while (mQueue.size() == 0) {
                 System.out.println("Thread " + Thread.currentThread().getName() + " waiting");
                 try {
-                    mFullCondition.await();
+                    mEmptyCondition.await();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 System.out.println("Thread " + Thread.currentThread().getName() + " awake");
             }
-            mQueue.offer("testString");
+            mQueue.poll();
             System.out.println("Thread " + Thread.currentThread().getName()
                     + " size = " + mQueue.size());
-            mEmptyCondition.signalAll();
+            mFullCondition.signalAll();
             mLock.unlock();
 
             Utils.randomDelay(1000);
