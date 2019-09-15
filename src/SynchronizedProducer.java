@@ -32,6 +32,8 @@ public class SynchronizedProducer implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            Utils.randomDelay(1000);
         }
     }
 }

@@ -30,6 +30,7 @@ public class SynchronizedConsumer implements Runnable {
                 e.printStackTrace();
             }
 
+            Utils.randomDelay(1000);
         }
     }
 }
