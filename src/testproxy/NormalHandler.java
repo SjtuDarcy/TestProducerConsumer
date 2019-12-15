@@ -3,6 +3,8 @@ package testproxy;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class NormalHandler implements InvocationHandler {
 
